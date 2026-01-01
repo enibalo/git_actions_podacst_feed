@@ -1,4 +1,6 @@
-# GENERAL TIP: INDENTATION IS IMPORTANT 
+# GENERAL TIP: 
+# INDENTATION IS IMPORTANT 
+# You have to change GitHub actions permissions in settings depending on the workflow needs 
 name: Generate Podcast Feed  # you can name workflows 
 on: [push] # specifies when the workflow should run 
 jobs:  # a list of  jobs that should happen in a workflow 
@@ -8,13 +10,13 @@ jobs:  # a list of  jobs that should happen in a workflow
       - name: Checkout Repo # you can optionally name steps,
         uses: actions/checkout@v3 
         # syntax for running a workflow from the marketplace, 
-        # The action above is a Github created workflow to checkout a repo, 
-        # @vX allows you to specify the version of the worflow you want to use 
+        # The action above is a GitHub-created workflow to check out a repo, 
+        # @vX allows you to specify the version of the workflow you want to use 
       - name: Set Up Python
         uses: actions/setup-python@v4 
         with:
           python-version: "3.10"
-        # with allows you to specify arguments for the worflow you important 
+        # with allows you to specify arguments for the workflow you imported
       - name: Install Dependecies 
         run: | 
           python -m pip install --upgrade pip
@@ -22,15 +24,15 @@ jobs:  # a list of  jobs that should happen in a workflow
         # the |, allows you to have a multiline command 
       - name: Run Feed Generator 
         run: python feed.py 
-        # run allows you to run command in the ubuntu terminal ( remember that you spunu up an ubuntu OS sys)  
+        # run allows you to run a command in the ubuntu terminal ( remember that you spun up an Ubuntu OS sys)  
       - name: Push Repo 
       run: |
         git config  username github-actions 
         git config user.email github-actions@github.com
-        # git confid is necessary or else ACTIONS WILL NOT RUN 
         git add . 
         git commit -m "modified feed" 
         git push 
+      # git confid is necessary or else ACTIONS WILL NOT RUN 
         
         
         
