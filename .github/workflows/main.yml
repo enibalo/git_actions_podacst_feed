@@ -27,7 +27,7 @@ jobs:  # a list of  jobs that should happen in a workflow
       # run allows you to run a command in the ubuntu terminal ( remember that you spun up an Ubuntu OS sys)  
     - name: Push Repo 
       run: |
-        git config  username github-actions 
+        git config  user.name github-actions 
         git config user.email github-actions@github.com
         git add . 
         git commit -m "modified feed" 
