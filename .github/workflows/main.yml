@@ -32,7 +32,7 @@ jobs:  # a list of  jobs that should happen in a workflow
         git add . 
         git commit -m "modified feed" 
         git push 
-      # git confid is necessary or else ACTIONS WILL NOT RUN 
+      # git config is necessary or else the workflow WILL FAIL TO RUN 
       
       
       
