@@ -6,7 +6,8 @@ on: [push] # specifies when the workflow should run
 jobs:  # a list of  jobs that should happen in a workflow 
   build: #this is ONE JOB  
     runs-on: ubuntu-latest #it runs on UBUNTU OS (DOCKER FLASHBACKS XD) 
-    steps: #you need to specify steps in a job 
+    steps: 
+    #you need to specify steps in a job 
       - name: Checkout Repo # you can optionally name steps,
         uses: actions/checkout@v3 
         # syntax for running a workflow from the marketplace, 
