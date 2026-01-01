@@ -6,27 +6,26 @@ on: [push] # specifies when the workflow should run
 jobs:  # a list of  jobs that should happen in a workflow 
   build: #this is ONE JOB  
     runs-on: ubuntu-latest #it runs on UBUNTU OS (DOCKER FLASHBACKS XD) 
-    steps: 
-    #you need to specify steps in a job 
-      - name: Checkout Repo # you can optionally name steps,
-        uses: actions/checkout@v3 
-        # syntax for running a workflow from the marketplace, 
-        # The action above is a GitHub-created workflow to check out a repo, 
-        # @vX allows you to specify the version of the workflow you want to use 
-      - name: Set Up Python
-        uses: actions/setup-python@v4 
-        with:
-          python-version: "3.10"
-        # with allows you to specify arguments for the workflow you imported
-      - name: Install Dependecies 
-        run: | 
-          python -m pip install --upgrade pip
-          pip install pyyaml 
-        # the |, allows you to have a multiline command 
-      - name: Run Feed Generator 
-        run: python feed.py 
-        # run allows you to run a command in the ubuntu terminal ( remember that you spun up an Ubuntu OS sys)  
-      - name: Push Repo 
+    steps: #you need to specify steps in a job 
+    - name: Checkout Repo # you can optionally name steps,
+      uses: actions/checkout@v3 
+      # syntax for running a workflow from the marketplace, 
+      # The action above is a GitHub-created workflow to check out a repo, 
+      # @vX allows you to specify the version of the workflow you want to use 
+    - name: Set Up Python
+      uses: actions/setup-python@v4 
+      with:
+        python-version: "3.10"
+      # with allows you to specify arguments for the workflow you imported
+    - name: Install Dependecies 
+      run: | 
+        python -m pip install --upgrade pip
+        pip install pyyaml 
+      # the |, allows you to have a multiline command 
+    - name: Run Feed Generator 
+      run: python feed.py 
+      # run allows you to run a command in the ubuntu terminal ( remember that you spun up an Ubuntu OS sys)  
+    - name: Push Repo 
       run: |
         git config  username github-actions 
         git config user.email github-actions@github.com
@@ -34,6 +33,6 @@ jobs:  # a list of  jobs that should happen in a workflow
         git commit -m "modified feed" 
         git push 
       # git confid is necessary or else ACTIONS WILL NOT RUN 
-        
-        
-        
+      
+      
+      
