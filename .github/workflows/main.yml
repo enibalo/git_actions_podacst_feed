@@ -12,27 +12,8 @@ jobs:  # a list of  jobs that should happen in a workflow
       # syntax for running a workflow from the marketplace, 
       # The action above is a GitHub-created workflow to check out a repo, 
       # @vX allows you to specify the version of the workflow you want to use 
-    - name: Set Up Python
-      uses: actions/setup-python@v4 
-      with:
-        python-version: "3.10"
-      # with allows you to specify arguments for the workflow you imported
-    - name: Install Dependecies 
-      run: | 
-        python -m pip install --upgrade pip
-        pip install pyyaml 
-      # the |, allows you to have a multiline command 
-    - name: Run Feed Generator 
-      run: python feed.py 
-      # run allows you to run a command in the ubuntu terminal ( remember that you spun up an Ubuntu OS sys)  
-    - name: Push Repo 
-      run: |
-        git config  user.name github-actions 
-        git config user.email github-actions@github.com
-        git add . 
-        git commit -m "modified feed" 
-        git push 
-      # git config is necessary or else the workflow WILL FAIL TO RUN 
+    - name: Run Feed Generator
+      uses: enibalo/git_actions_podcast_generator@main
       
       
       
